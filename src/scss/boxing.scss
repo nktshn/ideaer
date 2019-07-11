@@ -1,0 +1,82 @@
+// placing:
+
+.r {
+    display: flex;
+    flex-direction: row;
+    box-sizing: border-box;
+}
+
+.c {
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+}
+
+.jb {
+    justify-content: space-between;
+}
+
+.jc {
+    justify-content: center;
+}
+
+.ac {
+    align-items: center;
+}
+
+// boxing:
+
+.w {
+    width: 100%;
+}
+
+.h {
+    height: 100%;
+}
+
+.mh {
+    height: 100%;
+    min-height: 100%;
+    max-height: 100%;
+}
+
+.mw {
+    min-width: 100%;
+    max-width: 100%;
+    width: 100%;
+}
+
+// spacing:
+
+@function getPadding($level) {
+    $res: map-get((
+        1 : 1rem,
+        2 : 1.5rem,
+        3 : 2rem, 
+    ), $level);
+    @return $res; 
+}
+
+.p1 {
+    padding: getPadding(1);
+}
+
+.p2 {
+    padding: getPadding(2);
+}
+
+.p3 {
+    padding: getPadding(3);
+}
+
+.m1 {
+    margin: getPadding(1);
+}
+
+.m2 {
+    margin: getPadding(2);
+}
+
+.m3 {
+    margin: getPadding(3);
+}

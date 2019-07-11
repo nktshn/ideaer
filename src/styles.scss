@@ -1,1 +1,22 @@
 /* You can add global styles to this file, and also import other style files */
+@import './scss/boxing.scss';
+@import './scss/colors.scss';
+@import './scss/fonts.scss';
+
+// fonts:
+
+$fontName: 'roboto-regular';
+$mainFontSize: 18px;
+
+@function fontSize($fontSize) {
+    @return '#{$fontSize / $mainFontSize}rem';
+}
+
+// overloads:
+
+html, body {
+    font-size: $mainFontSize;
+    font-family: $fontName;
+    padding: 0;
+    margin: 0;
+}
