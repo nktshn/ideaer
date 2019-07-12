@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { SupportedLocalization } from 'src/app/services/localization/localization-data';
 import { LocalizationService } from 'src/app/services/localization/localization.service';
 
