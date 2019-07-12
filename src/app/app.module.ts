@@ -10,6 +10,7 @@ import { AboutComponent } from './components/about/about.component';
 import { HomeComponent } from './components/home/home.component';
 import { HeaderComponent } from './components/header/header.component';
 import { LangSwitcherComponent } from './components/UI/lang-switcher/lang-switcher.component';
+import { IdeasGeneratorComponent } from './components/ideas-generator/ideas-generator.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { LangSwitcherComponent } from './components/UI/lang-switcher/lang-switch
     AboutComponent,
     HomeComponent,
     HeaderComponent,
-    LangSwitcherComponent
+    LangSwitcherComponent,
+    IdeasGeneratorComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,7 @@
+@import './../../../scss/fonts';
+@import './../../../scss/colors';
+
+.title {
+    font-size: fontSize(34px);
+    color: $dark;
+}
