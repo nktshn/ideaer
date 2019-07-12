@@ -1,11 +1,7 @@
 export const LOCALIZATION_DATA: LocalizationData = {
-    error: {
-        en: 'Something went wrong',
-        ru: 'Что-то пошло не так'
-    },
-    upload: {
-        en: 'upload',
-        ru: 'загрузить'
+    title: {
+        en: 'Ideaer - Your ideas collection',
+        ru: 'Ideaer - Твоя коллекция идей'
     }
 };
 

@@ -3,15 +3,6 @@
 @import './scss/colors.scss';
 @import './scss/fonts.scss';
 
-// fonts:
-
-$fontName: 'roboto-regular';
-$mainFontSize: 18px;
-
-@function fontSize($fontSize) {
-    @return '#{$fontSize / $mainFontSize}rem';
-}
-
 // overloads:
 
 html, body {

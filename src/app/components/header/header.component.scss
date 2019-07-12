@@ -1,0 +1,9 @@
+@import './../../../scss/colors.scss';
+@import './../../../scss/fonts.scss';
+
+.header {
+    height: 80px;
+    background-color: $accent;
+    color: white;
+    font-size: fontSize(22px);
+}
