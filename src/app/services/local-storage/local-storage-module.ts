@@ -13,11 +13,16 @@ export namespace LocalStorageModule {
         }
 
         update(index: number, data: T): T[] {
-            const dataToSet: T[] = this.getData();
-            dataToSet[index] = data;
-            this.set(dataToSet);
-            this.normalizeCollection();
-            return this.getData();
+            try {
+                const dataToSet: T[] = this.getData();
+                dataToSet[index] = data;
+                this.set(dataToSet);
+                this.normalizeCollection();
+                return this.getData();
+            } catch (e) {
+                console.warn('invalid collection value read', e);
+                this.set([]);
+            }
         }
 
         add(...data: T[]): T[] {

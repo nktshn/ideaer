@@ -10,14 +10,16 @@ import { LocalizationService } from 'src/app/services/localization/localization.
 export class LangSwitcherComponent implements OnInit {
 
   readonly supportedLocalizations: SupportedLocalization[];
+  currentLocalization: SupportedLocalization;
 
   constructor(
-    private ls: LocalizationService,
+    public ls: LocalizationService,
   ) {
     this.supportedLocalizations = this.ls.supportedLocalizations;
   }
 
   ngOnInit() {
+    this.currentLocalization = this.ls.getCurrentLocalization();
   }
 
   onChangeLocalization(lang: SupportedLocalization) {

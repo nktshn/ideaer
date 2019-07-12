@@ -6,6 +6,10 @@ import { LocalStorageModule } from './local-storage-module';
 })
 export class LocalStorageService {
 
+  public readonly Collections = {
+    localization: 'localization',
+  };
+
   storage: Storage;
 
   constructor() {
