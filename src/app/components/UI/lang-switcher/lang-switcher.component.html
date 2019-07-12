@@ -1,0 +1,5 @@
+<div class="switcher">
+    <select (change)="onChangeLocalization($event.target.value)" name="lang" id="lang">
+        <option *ngFor="let lang of supportedLocalizations" [value]="lang">{{lang}}</option>
+    </select>
+</div>

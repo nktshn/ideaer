@@ -8,6 +8,7 @@ import { MainComponent } from './components/main/main.component';
 import { AboutComponent } from './components/about/about.component';
 import { HomeComponent } from './components/home/home.component';
 import { HeaderComponent } from './components/header/header.component';
+import { LangSwitcherComponent } from './components/UI/lang-switcher/lang-switcher.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { HeaderComponent } from './components/header/header.component';
     MainComponent,
     AboutComponent,
     HomeComponent,
-    HeaderComponent
+    HeaderComponent,
+    LangSwitcherComponent
   ],
   imports: [
     BrowserModule,

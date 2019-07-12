@@ -8,14 +8,12 @@ import { LocalizationService } from 'src/app/services/localization/localization.
 })
 export class HeaderComponent implements OnInit {
 
-  title: string;
-
   constructor(
-    private ls: LocalizationService
+    public ls: LocalizationService
   ) { }
 
   ngOnInit() {
-    this.title = this.ls.getMessage('title');
+
   }
 
 }
