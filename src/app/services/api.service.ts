@@ -25,12 +25,13 @@ export class ApiService {
   }
 
   private getHttpParams(params: { [index: string]: string | number | boolean }): HttpParams {
-    const httpParams: HttpParams = new HttpParams();
+    let httpParams: HttpParams = new HttpParams();
     for (const key in params) {
       if (params.hasOwnProperty(key)) {
-        httpParams.set(key, JSON.stringify(params[key]));
+        httpParams = httpParams.set(key, params[key].toString());
       }
     }
+    
     return httpParams;
   }
 }
