@@ -18,6 +18,10 @@ export const LOCALIZATION_DATA: LocalizationData = {
     collect: {
         en: 'Collect',
         ru: 'Добавить в коллекцию'
+    },
+    myCollection: {
+        en: 'My collection',
+        ru: 'Моя коллекция'
     }
 };
 

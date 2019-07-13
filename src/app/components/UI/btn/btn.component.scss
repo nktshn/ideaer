@@ -4,6 +4,7 @@
 
 .btn {
     min-width: 100px;
+    white-space: nowrap;
     border: none;
     padding: 0.5rem 1rem;
     font-size: fontSize(16px);
@@ -12,9 +13,6 @@
     font-kerning: normal;
     transition: $globalTransition;
     cursor: pointer;
-    &:active {
-        
-    }
     &:hover {
         opacity: 0.9;
     }
@@ -29,6 +27,7 @@
     color: white;
     &:active {
         background-color: $accentSoft;
+        border-color: $accentSoft;
     }
     &:disabled {
         background-color: $grey;
@@ -39,11 +38,11 @@
 
 .secondary {
     background: none;
-    border: 1px solid $accentSoft;
+    border: 1px solid $accentBorder;
     color: $accent;
     font-family: 'roboto-regular';
     &:active {
-        background-color: white;
+        opacity: 0.7;
     }
     &:disabled {
         background-color: $lightGrey;

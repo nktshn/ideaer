@@ -13,6 +13,7 @@ import { LangSwitcherComponent } from './components/UI/lang-switcher/lang-switch
 import { IdeasGeneratorComponent } from './components/ideas-generator/ideas-generator.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { BtnComponent } from './components/UI/btn/btn.component';
+import { MyCollectionComponent } from './components/my-collection/my-collection.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { BtnComponent } from './components/UI/btn/btn.component';
     HeaderComponent,
     LangSwitcherComponent,
     IdeasGeneratorComponent,
-    BtnComponent
+    BtnComponent,
+    MyCollectionComponent
   ],
   imports: [
     BrowserModule,

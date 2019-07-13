@@ -16,6 +16,13 @@ body * {
     outline: none;
 }
 
+h2 {
+    font-size: fontSize(28px);
+    color: $dark;
+    margin: 0;
+    font-weight: 400;
+}
+
 app-home {
     box-sizing: border-box;
     height: 100%;
