@@ -1,5 +1,12 @@
 <div class="ideas-generator c">
     <div class="title">{{ls.getMessage('generatorTitle')}}:</div>
     <div class="fetched-idea mt2">{{fetchedIdea}}</div>
-    <app-btn [disabled]="disabled" (click)="onFetchIdea()" [value]="ls.getMessage('getAnotherOne')"></app-btn>
+    <div class="mt2 r w">
+        <app-btn class="mr1" type="primary" [disabled]="disabled" (btnClick)="onFetchIdea()"
+            [value]="ls.getMessage('getAnotherOne')">
+        </app-btn>
+        <app-btn type="secondary" [disabled]="disabled" (btnClick)="onCollectIdea()"
+            [value]="ls.getMessage('collect')">
+        </app-btn>
+    </div>
 </div>

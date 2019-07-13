@@ -26,3 +26,18 @@ $mainFontSize: 18px;
   font-family: roboto-light;
   src: url(src/assets/fonts/Roboto-Light.ttf) format("opentype");
 }
+
+@font-face {
+  font-family: roboto-black;
+  src: url(src/assets/fonts/Roboto-Black.ttf) format("opentype");
+}
+
+@font-face {
+  font-family: roboto-thin;
+  src: url(src/assets/fonts/Roboto-Thin.ttf) format("opentype");
+}
+
+@font-face {
+  font-family: roboto-medium;
+  src: url(src/assets/fonts/Roboto-Medium.ttf) format("opentype");
+}

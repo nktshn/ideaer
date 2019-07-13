@@ -50,60 +50,39 @@
 
 @function getPadding($level) {
     $res: map-get((
-        1 : 1rem,
+        1 : 0.4rem,
         2 : 1.5rem,
         3 : 2rem, 
     ), $level);
     @return $res; 
 }
 
-.p1 {
-    padding: getPadding(1);
-}
-
-.p2 {
-    padding: getPadding(2);
-}
-
-.p3 {
-    padding: getPadding(3);
-}
-
-.m1 {
-    margin: getPadding(1);
-}
-
-.m2 {
-    margin: getPadding(2);
-}
-
-.m3 {
-    margin: getPadding(3);
-}
-
-.plr1 {
-    padding-left: getPadding(1);
-    padding-right: getPadding(1);
-}
-
-.plr2 {
-    padding-left: getPadding(2);
-    padding-right: getPadding(2);
-}
-
-.plr3 {
-    padding-left: getPadding(3);
-    padding-right: getPadding(3);
-}
-
-.mt1 {
-    margin-top: getPadding(1);
-}
-
-.mt2 {
-    margin-top: getPadding(2);
-}
-
-.mt3 {
-    margin-top: getPadding(3);
-}
+// fucking power of scss!
+$classTypes: (
+    m: margin,
+    p: padding,
+    ml: margin-left,
+    mr: margin-right,
+    pl: padding-left,
+    pr: padding-right,
+    mt: margin-top,
+    mb: margin-bottom,
+);
+@mixin generateMarginsAndPaddings($len) {
+    @each $className, $styleName in $classTypes {
+        @for $i from 1 through $len {
+            .#{$className}#{$i} { 
+                #{$styleName} : getPadding($i); 
+            }
+        }
+    }
+};
+@function getPadding($level) {
+    $res: map-get((
+        1 : 0.8rem,
+        2 : 1.5rem,
+        3 : 2rem, 
+    ), $level);
+    @return $res; 
+};
+@include generateMarginsAndPaddings(3);

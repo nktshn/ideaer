@@ -4,7 +4,7 @@ export const LOCALIZATION_DATA: LocalizationData = {
         ru: 'Ideaer - Твоя коллекция идей'
     },
     generatorTitle: {
-        en: 'New idea',
+        en: 'A new idea',
         ru: 'Новая идея'
     },
     somethingWentWrong: {
@@ -15,6 +15,10 @@ export const LOCALIZATION_DATA: LocalizationData = {
         en: 'Get another one',
         ru: 'Получить еще'
     },
+    collect: {
+        en: 'Collect',
+        ru: 'Добавить в коллекцию'
+    }
 };
 
 export type SupportedLocalization = 'en' | 'ru';

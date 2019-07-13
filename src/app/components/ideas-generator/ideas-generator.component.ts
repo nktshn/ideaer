@@ -21,7 +21,7 @@ export class IdeasGeneratorComponent implements OnInit {
     private boredapi: BoredService,
   ) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.onFetchIdea();
   };
 
@@ -29,7 +29,7 @@ export class IdeasGeneratorComponent implements OnInit {
     this.subscriptions.forEach(sub => sub.unsubscribe());
   }
 
-  onFetchIdea() {
+  onFetchIdea(): void {
     this.fetchedIdea = '...';
     this.disabled = true;
     this.subscriptions.push(
@@ -46,6 +46,10 @@ export class IdeasGeneratorComponent implements OnInit {
         this.disabled = false;
       })
     )
+  }
+
+  onCollectIdea(): void {
+    
   }
 
 }

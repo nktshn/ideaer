@@ -1,1 +1,1 @@
-<button [disabled]="disabled" class="btn">{{value}}</button>
+<button (click)="btnClick.emit()" [disabled]="disabled" class="btn {{type}}">{{value}}</button>

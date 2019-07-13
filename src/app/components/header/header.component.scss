@@ -1,9 +1,10 @@
 @import './../../../scss/colors.scss';
 @import './../../../scss/fonts.scss';
+@import './../../../scss/boxing.scss';
 
 .header {
-    height: 4rem;
     background-color: $accent;
     color: white;
     font-size: fontSize(22px);
+    padding: #{getPadding(2)} #{getPadding(3)}
 }

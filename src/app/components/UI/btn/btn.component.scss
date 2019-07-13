@@ -1,0 +1,54 @@
+@import './../../../../scss/colors';
+@import './../../../../scss/fonts';
+@import './../../../../scss/animations';
+
+.btn {
+    min-width: 100px;
+    border: none;
+    padding: 0.5rem 1rem;
+    font-size: fontSize(16px);
+    border-radius: 6px;
+    font-family: 'roboto-light';
+    font-kerning: normal;
+    transition: $globalTransition;
+    cursor: pointer;
+    &:active {
+        
+    }
+    &:hover {
+        opacity: 0.9;
+    }
+    &:disabled {
+        cursor: default;
+    }
+}
+
+.primary {
+    border: 1px solid $accent;
+    background-color: $accent;
+    color: white;
+    &:active {
+        background-color: $accentSoft;
+    }
+    &:disabled {
+        background-color: $grey;
+        cursor: default;
+        border-color: $lightGrey;
+    }
+}
+
+.secondary {
+    background: none;
+    border: 1px solid $accentSoft;
+    color: $accent;
+    font-family: 'roboto-regular';
+    &:active {
+        background-color: white;
+    }
+    &:disabled {
+        background-color: $lightGrey;
+        border-color: $lightGrey;
+        color: $grey;
+        cursor: default;
+    }
+}
