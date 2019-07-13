@@ -11,6 +11,8 @@ import { HomeComponent } from './components/home/home.component';
 import { HeaderComponent } from './components/header/header.component';
 import { LangSwitcherComponent } from './components/UI/lang-switcher/lang-switcher.component';
 import { IdeasGeneratorComponent } from './components/ideas-generator/ideas-generator.component';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { BtnComponent } from './components/UI/btn/btn.component';
 
 @NgModule({
   declarations: [
@@ -20,15 +22,17 @@ import { IdeasGeneratorComponent } from './components/ideas-generator/ideas-gene
     HomeComponent,
     HeaderComponent,
     LangSwitcherComponent,
-    IdeasGeneratorComponent
+    IdeasGeneratorComponent,
+    BtnComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    HttpClientModule
   ],
   providers: [
-    ApiService
+    ApiService,
   ],
   bootstrap: [AppComponent]
 })

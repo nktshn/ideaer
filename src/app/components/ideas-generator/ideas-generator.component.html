@@ -1,4 +1,5 @@
-<div class="ideas-generator">
-    <div class="title">{{ls.getMessage('generator-title')}}:</div>
-    <div class="fetched-idea"></div>
+<div class="ideas-generator c">
+    <div class="title">{{ls.getMessage('generatorTitle')}}:</div>
+    <div class="fetched-idea mt2">{{fetchedIdea}}</div>
+    <app-btn [disabled]="disabled" (click)="onFetchIdea()" [value]="ls.getMessage('getAnotherOne')"></app-btn>
 </div>

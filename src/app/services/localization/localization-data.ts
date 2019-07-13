@@ -3,10 +3,18 @@ export const LOCALIZATION_DATA: LocalizationData = {
         en: 'Ideaer - Your ideas collection',
         ru: 'Ideaer - Твоя коллекция идей'
     },
-    'generator-title': {
+    generatorTitle: {
         en: 'New idea',
         ru: 'Новая идея'
-    }
+    },
+    somethingWentWrong: {
+        en: 'Something went wrong',
+        ru: 'Что-то пошло не так'
+    },
+    getAnotherOne: {
+        en: 'Get another one',
+        ru: 'Получить еще'
+    },
 };
 
 export type SupportedLocalization = 'en' | 'ru';
