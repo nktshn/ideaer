@@ -14,6 +14,8 @@ import { IdeasGeneratorComponent } from './components/ideas-generator/ideas-gene
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { BtnComponent } from './components/UI/btn/btn.component';
 import { MyCollectionComponent } from './components/my-collection/my-collection.component';
+import { EditIdeaComponent } from './components/edit-idea/edit-idea.component';
+import { OverlayModule } from '@angular/cdk/overlay';
 
 @NgModule({
   declarations: [
@@ -25,16 +27,21 @@ import { MyCollectionComponent } from './components/my-collection/my-collection.
     LangSwitcherComponent,
     IdeasGeneratorComponent,
     BtnComponent,
-    MyCollectionComponent
+    MyCollectionComponent,
+    EditIdeaComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    OverlayModule,
   ],
   providers: [
     ApiService,
+  ],
+  entryComponents: [
+    EditIdeaComponent
   ],
   bootstrap: [AppComponent]
 })

@@ -3,6 +3,8 @@ import { LocalizationService } from 'src/app/services/localization/localization.
 import { BoredService } from 'src/app/services/boredapi/bored.service';
 import { Subscription } from 'rxjs';
 import { takeWhile } from 'rxjs/operators';
+import { ModalService } from 'src/app/services/modal/modal.service';
+import { EditIdeaComponent } from '../edit-idea/edit-idea.component';
 
 @Component({
   selector: 'app-ideas-generator',
@@ -19,6 +21,7 @@ export class IdeasGeneratorComponent implements OnInit {
   constructor(
     public ls: LocalizationService,
     private boredapi: BoredService,
+    private modalService: ModalService,
   ) { }
 
   ngOnInit(): void {
@@ -49,7 +52,7 @@ export class IdeasGeneratorComponent implements OnInit {
   }
 
   onCollectIdea(): void {
-    
+    this.modalService.openModal<EditIdeaComponent, any>(EditIdeaComponent);
   }
 
 }
