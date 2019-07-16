@@ -8,9 +8,9 @@
 
 .fetched-idea {
     font-family: 'roboto-regular';
-    color: #8b8eb9;
+    color: $accentSoft;
     font-size: fontSize(21px);
-    border: 1px solid #cecece;
+    border: 1px solid $lightGrey;
     padding: 0.9rem;
     border-radius: 8px;
 }

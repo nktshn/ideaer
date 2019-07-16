@@ -12,6 +12,7 @@ Angular 8 code example.
 - Unit tests
 - Routing
 - Usage of power of SCSS (search for boxing.scss)
+- Angular CDK
 
 ## Development server
 

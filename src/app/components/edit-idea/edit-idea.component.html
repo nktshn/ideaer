@@ -1,4 +1,13 @@
 <div class="edit-idea p1 card absolute-center">
     <h3>{{ls.getMessage('collectIdea')}}</h3>
-    
+    <form [formGroup]="ideaForm" (ngSubmit)="onCollectIdea()" class="c mt2">
+        <div class="form-item">
+            <div class="form-item-title">Title</div>
+            <input [value]="ideaFormControls['title'].value" type="text" name="" formControlName="title" id="">
+        </div>
+        <div class="form-item">
+            <div class="form-item-title">Description</div>
+            <input [value]="ideaFormControls['title'].description" type="text" name="" formControlName="description" id="">
+        </div>
+    </form>
 </div>

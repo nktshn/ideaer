@@ -5,6 +5,7 @@ import { Subscription } from 'rxjs';
 import { takeWhile } from 'rxjs/operators';
 import { ModalService } from 'src/app/services/modal/modal.service';
 import { EditIdeaComponent } from '../edit-idea/edit-idea.component';
+import { Idea } from '../edit-idea/models';
 
 @Component({
   selector: 'app-ideas-generator',
@@ -52,7 +53,9 @@ export class IdeasGeneratorComponent implements OnInit {
   }
 
   onCollectIdea(): void {
-    const modal = this.modalService.openModal<EditIdeaComponent, any>(EditIdeaComponent);
+    const modal = this.modalService.openModal<EditIdeaComponent, Partial<Idea>>(EditIdeaComponent, {
+      title: this.fetchedIdea,
+    });
     modal.backdropClick().subscribe(_ => {
       modal.dispose();
     });
