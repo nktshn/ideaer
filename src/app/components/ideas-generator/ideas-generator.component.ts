@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ComponentRef } from '@angular/core';
 import { LocalizationService } from 'src/app/services/localization/localization.service';
 import { BoredService } from 'src/app/services/boredapi/bored.service';
 import { Subscription } from 'rxjs';
@@ -16,7 +16,7 @@ export class IdeasGeneratorComponent implements OnInit {
   private subscriptions: Subscription[] = [];
 
   disabled: boolean;
-  fetchedIdea: string = '...';
+  fetchedIdea = '...';
 
   constructor(
     public ls: LocalizationService,
@@ -26,7 +26,7 @@ export class IdeasGeneratorComponent implements OnInit {
 
   ngOnInit(): void {
     this.onFetchIdea();
-  };
+  }
 
   ngOnDestroy(): void {
     this.subscriptions.forEach(sub => sub.unsubscribe());
@@ -48,11 +48,14 @@ export class IdeasGeneratorComponent implements OnInit {
       }), () => {
         this.disabled = false;
       })
-    )
+    );
   }
 
   onCollectIdea(): void {
-    this.modalService.openModal<EditIdeaComponent, any>(EditIdeaComponent);
+    const modal = this.modalService.openModal<EditIdeaComponent, any>(EditIdeaComponent);
+    modal.backdropClick().subscribe(_ => {
+      modal.dispose();
+    });
   }
 
 }

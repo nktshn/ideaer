@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LocalizationService } from 'src/app/services/localization/localization.service';
 
 @Component({
   selector: 'app-edit-idea',
@@ -7,9 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EditIdeaComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    public ls: LocalizationService,
+  ) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
   }
 
 }

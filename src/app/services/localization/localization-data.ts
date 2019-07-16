@@ -22,6 +22,10 @@ export const LOCALIZATION_DATA: LocalizationData = {
     myCollection: {
         en: 'My collection',
         ru: 'Моя коллекция'
+    },
+    collectIdea: {
+        en: 'Collect the idea',
+        ru: 'Добавить идею в коллекцию'
     }
 };
 

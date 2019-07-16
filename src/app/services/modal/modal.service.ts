@@ -19,20 +19,20 @@ export class ModalService {
     data?: InjectingData,
     config?: OverlayConfig
   ): OverlayRef {
-    const _config = config || this.getDefaultOverlayConfig();
-    const overlayRef = this.overlay.create(_config);
+    const resultConfig = config || this.getDefaultModalOverlayConfig();
+    const overlayRef = this.overlay.create(resultConfig);
     const componentPortal = new ComponentPortal(component);
     overlayRef.attach(componentPortal);
     return overlayRef;
   }
 
-  private getDefaultOverlayConfig(): OverlayConfig {
+  private getDefaultModalOverlayConfig(): OverlayConfig {
     return {
       hasBackdrop: true,
       backdropClass: 'cdk-backdrop',
-      panelClass: 'cdk-panel',
-      positionStrategy: this.overlay.position().global()
-    }
+      panelClass: 'cdk-panel-popup',
+      positionStrategy: null,
+    };
   }
 
 }
