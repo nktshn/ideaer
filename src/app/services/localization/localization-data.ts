@@ -17,7 +17,7 @@ export const LOCALIZATION_DATA: LocalizationData = {
     },
     collect: {
         en: 'Collect',
-        ru: 'Добавить в коллекцию'
+        ru: 'Добавить'
     },
     myCollection: {
         en: 'My collection',

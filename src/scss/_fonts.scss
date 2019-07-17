@@ -1,5 +1,5 @@
 $fontName: 'roboto-light';
-$mainFontSize: 18px;
+$mainFontSize: 16px;
 
 @function remCalc($fontSize) {
 	@return $fontSize / $mainFontSize;

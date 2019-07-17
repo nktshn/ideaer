@@ -34,7 +34,7 @@ export class IdeasGeneratorComponent implements OnInit {
     this.onFetchIdea();
 
     this.subscriptions.push(
-      this.editIdeaService.ideaCollecting.subscribe(_ => {
+      this.editIdeaService.ideaHasBeenCollected.subscribe(_ => {
         this.modal.dispose();
         this.onFetchIdea();
       })

@@ -19,14 +19,14 @@ body * {
 // Headers
 
 $fontSizes: (
-    1: 32,
-    2: 28,
-    3: 24,
+    1: 32px,
+    2: 28px,
+    3: 24px,
 );
 @mixin generateHeadersFontSizes() {
     @each $hIndex, $fontSize in $fontSizes {
-        .h#{$hIndex} { 
-            #{$fontSize} : fontSize(#{$fontSize}px);
+        h#{$hIndex} { 
+            font-size : fontSize($fontSize);
             color: $dark;
             margin: 0;
             font-weight: 400; 
@@ -42,6 +42,21 @@ app-home {
     max-height: 100%;
     display: flex;
     flex-direction: column;
+}
+
+label.label {
+    font-size: fontSize(16px);
+    color: $grey;
+}
+
+input.input {
+    height: 38px;
+    border: 1px solid $lightGrey;
+    border-radius: 5px;
+    padding: 0 12px 0 12px;
+    font-size: fontSize(16px);
+    color: $dark;
+    font-family: 'roboto-light';
 }
 
 .card {
@@ -72,4 +87,8 @@ app-home {
     margin: auto;
     height: fit-content;
     width: fit-content;
+}
+
+.error-label {
+    color: $red;
 }

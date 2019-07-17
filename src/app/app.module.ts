@@ -28,7 +28,7 @@ import { OverlayModule } from '@angular/cdk/overlay';
     IdeasGeneratorComponent,
     BtnComponent,
     MyCollectionComponent,
-    EditIdeaComponent
+    EditIdeaComponent,
   ],
   imports: [
     BrowserModule,

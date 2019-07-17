@@ -2,15 +2,18 @@
     <h3>{{ls.getMessage('collectIdea')}}</h3>
     <form [formGroup]="ideaForm" class="c mt2">
         <div class="form-items c">
-            <div class="form-item">
-                <div class="form-item-title">Title</div>
-                <input [value]="ideaForm.controls['title'].value" type="text" formControlName="title">
-                <div *ngIf="ideaForm.controls['title'].errors?.required" class="form-item-error">required</div>
-                <div *ngIf="ideaForm.controls['title'].errors?.pattern" class="form-item-error">invalid pattern</div>
+            <div class="form-item c mb1">
+                <label class="label form-item-label">Title</label>
+                <input class="input form-item-input" [value]="ideaForm.controls['title'].value" type="text"
+                    formControlName="title">
+                <div *ngIf="ideaForm.controls['title'].errors?.required" class="error-label form-item-error">This field
+                    is required</div>
+                <div *ngIf="ideaForm.controls['title'].errors?.pattern" class="error-label form-item-error">invalid
+                    pattern</div>
             </div>
-            <div class="form-item">
-                <div class="form-item-title">Description</div>
-                <input [value]="ideaForm.controls['description'].value" type="text" formControlName="description">
+            <div class="form-item c mb1">
+                <label class="label form-item-label">Description</label>
+                <textarea [value]="ideaForm.controls['description'].value" type="text" formControlName="description"></textarea>
             </div>
         </div>
         <div class="btns r mt2 je">
