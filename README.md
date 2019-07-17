@@ -13,6 +13,7 @@ Angular 8 code example.
 - Routing
 - Usage of power of SCSS (search for boxing.scss)
 - Angular CDK
+- Reactive Forms
 
 ## Development server
 

@@ -3,6 +3,7 @@ import { LocalizationService } from 'src/app/services/localization/localization.
 import { FormBuilder, FormControl, FormGroup, Validators, AbstractControl } from '@angular/forms';
 import { Idea } from './models';
 import { INJECTION_TOKENS } from 'src/app/services/modal/modal.service';
+import { NOT_ONLY_SPACES } from 'src/app/utils/regexps';
 
 @Component({
   selector: 'app-edit-idea',
@@ -24,8 +25,12 @@ export class EditIdeaComponent implements OnInit {
 
   ngOnInit(): void {
     console.log('idea: ', this.idea);
+
     this.ideaForm = this.formBuilder.group({
-      title: new FormControl(this.idea.title, [Validators.required]),
+      title: new FormControl(this.idea.title, [
+        Validators.required,
+        Validators.pattern(NOT_ONLY_SPACES),
+      ]),
       description: new FormControl(this.idea.description || ''),
     });
     this.ideaFormControls = this.ideaForm.controls;
