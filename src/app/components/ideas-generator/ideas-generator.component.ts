@@ -3,7 +3,7 @@ import { LocalizationService } from 'src/app/services/localization/localization.
 import { BoredService } from 'src/app/services/boredapi/bored.service';
 import { Subscription } from 'rxjs';
 import { takeWhile } from 'rxjs/operators';
-import { ModalService } from 'src/app/services/modal/modal.service';
+import { ModalService, INJECTION_TOKENS } from 'src/app/services/modal/modal.service';
 import { EditIdeaComponent } from '../edit-idea/edit-idea.component';
 import { Idea } from '../edit-idea/models';
 
@@ -53,9 +53,13 @@ export class IdeasGeneratorComponent implements OnInit {
   }
 
   onCollectIdea(): void {
-    const modal = this.modalService.openModal<EditIdeaComponent, Partial<Idea>>(EditIdeaComponent, {
-      title: this.fetchedIdea,
-    });
+    const modal = this.modalService.openModal<EditIdeaComponent, Partial<Idea>>(
+      EditIdeaComponent,
+      INJECTION_TOKENS.IDEA,
+      {
+        title: this.fetchedIdea,
+      }
+    );
     modal.backdropClick().subscribe(_ => {
       modal.dispose();
     });

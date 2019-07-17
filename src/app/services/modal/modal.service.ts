@@ -19,12 +19,13 @@ export class ModalService {
 
   openModal<CType, InjectingDataType>(
     component: ComponentType<CType>,
+    injectionToken: InjectionToken<string>,
     data?: InjectingDataType,
     config?: OverlayConfig
   ): OverlayRef {
     const resultConfig = config || this.getDefaultModalOverlayConfig();
     const overlayRef = this.overlay.create(resultConfig);
-    const componentPortal = new ComponentPortal(component, null, this.createInjector<InjectingDataType>(data, 'idea'));
+    const componentPortal = new ComponentPortal(component, null, this.createInjector<InjectingDataType>(data, injectionToken));
     overlayRef.attach(componentPortal);
     return overlayRef;
   }
@@ -38,13 +39,13 @@ export class ModalService {
     };
   }
 
-  private createInjector<DataType>(dataToPass: DataType, tokenName: string): PortalInjector {
-    this.injectorTokens.set(INJECTION_TOKENS[tokenName], dataToPass);
+  private createInjector<DataType>(dataToPass: DataType, injectionToken: InjectionToken<string>): PortalInjector {
+    this.injectorTokens.set(injectionToken, dataToPass);
     return new PortalInjector(this.injector, this.injectorTokens);
   }
 }
 
 export const INJECTION_TOKENS: { [tokenName: string]: InjectionToken<string> } = {
-  idea: new InjectionToken<string>('idea'),
+  IDEA: new InjectionToken<string>('IDEA'),
 };
 

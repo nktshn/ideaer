@@ -13,19 +13,22 @@ import { NOT_ONLY_SPACES } from 'src/app/utils/regexps';
 export class EditIdeaComponent implements OnInit {
 
   ideaForm: FormGroup;
-  ideaFormControls: {
-    [key: string]: AbstractControl;
-  };
 
   constructor(
     public ls: LocalizationService,
     private formBuilder: FormBuilder,
-    @Inject(INJECTION_TOKENS.idea) public idea: Idea,
+    @Inject(INJECTION_TOKENS.IDEA) public idea: Idea,
   ) { }
 
   ngOnInit(): void {
-    console.log('idea: ', this.idea);
+    this.initIdeaForm();
+  }
 
+  onCollectIdea(): void {
+
+  }
+
+  private initIdeaForm(): void {
     this.ideaForm = this.formBuilder.group({
       title: new FormControl(this.idea.title, [
         Validators.required,
@@ -33,11 +36,6 @@ export class EditIdeaComponent implements OnInit {
       ]),
       description: new FormControl(this.idea.description || ''),
     });
-    this.ideaFormControls = this.ideaForm.controls;
-  }
-
-  onCollectIdea(): void {
-
   }
 
 }

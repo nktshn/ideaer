@@ -1,28 +1,22 @@
 <div class="edit-idea p1 card absolute-center">
     <h3>{{ls.getMessage('collectIdea')}}</h3>
-    <form [formGroup]="ideaForm" (ngSubmit)="onCollectIdea()" class="c mt2">
+    <form [formGroup]="ideaForm" class="c mt2">
         <div class="form-items c">
             <div class="form-item">
                 <div class="form-item-title">Title</div>
-                <input [value]="ideaFormControls['title'].value" type="text"
-                    name="" formControlName="title" id="">
-                <div *ngIf="ideaFormControls['title'].errors?.required"
-                    class="form-item-error">required</div>
-                <div *ngIf="ideaFormControls['title'].errors?.pattern"
-                    class="form-item-error">invalid pattern</div>
+                <input [value]="ideaForm.controls['title'].value" type="text" formControlName="title">
+                <div *ngIf="ideaForm.controls['title'].errors?.required" class="form-item-error">required</div>
+                <div *ngIf="ideaForm.controls['title'].errors?.pattern" class="form-item-error">invalid pattern</div>
             </div>
             <div class="form-item">
                 <div class="form-item-title">Description</div>
-                <input [value]="ideaFormControls['description'].value"
-                    type="text" name="" formControlName="description" id="">
+                <input [value]="ideaForm.controls['description'].value" type="text" formControlName="description">
             </div>
         </div>
         <div class="btns r mt2 je">
-            <app-btn type="primary" [disabled]="ideaForm.invalid"
-                (btnClick)="onCollectIdea()"
+            <app-btn type="primary" [disabled]="ideaForm.invalid" (btnClick)="onCollectIdea()"
                 [value]="ls.getMessage('collect')">
             </app-btn>
         </div>
     </form>
-
 </div>
