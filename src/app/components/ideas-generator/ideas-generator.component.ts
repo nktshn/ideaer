@@ -6,6 +6,8 @@ import { takeWhile } from 'rxjs/operators';
 import { ModalService, INJECTION_TOKENS } from 'src/app/services/modal/modal.service';
 import { EditIdeaComponent } from '../edit-idea/edit-idea.component';
 import { Idea } from '../edit-idea/models';
+import { EditIdeaService } from '../edit-idea/edit-idea.service';
+import { OverlayRef } from '@angular/cdk/overlay';
 
 @Component({
   selector: 'app-ideas-generator',
@@ -17,16 +19,26 @@ export class IdeasGeneratorComponent implements OnInit {
   private subscriptions: Subscription[] = [];
 
   disabled: boolean;
-  fetchedIdea = '...';
+  fetchedIdea: string;
+  modal: OverlayRef;
 
   constructor(
     public ls: LocalizationService,
     private boredapi: BoredService,
     private modalService: ModalService,
+    private editIdeaService: EditIdeaService,
   ) { }
 
   ngOnInit(): void {
+    this.fetchedIdea = '...';
     this.onFetchIdea();
+
+    this.subscriptions.push(
+      this.editIdeaService.ideaCollecting.subscribe(_ => {
+        this.modal.dispose();
+        this.onFetchIdea();
+      })
+    );
   }
 
   ngOnDestroy(): void {
@@ -53,15 +65,15 @@ export class IdeasGeneratorComponent implements OnInit {
   }
 
   onCollectIdea(): void {
-    const modal = this.modalService.openModal<EditIdeaComponent, Partial<Idea>>(
+    this.modal = this.modalService.openModal<EditIdeaComponent, Partial<Idea>>(
       EditIdeaComponent,
       INJECTION_TOKENS.IDEA,
       {
         title: this.fetchedIdea,
       }
     );
-    modal.backdropClick().subscribe(_ => {
-      modal.dispose();
+    this.modal.backdropClick().subscribe(_ => {
+      this.modal.dispose();
     });
   }
 

@@ -6,8 +6,9 @@ import { LocalStorageModule } from './local-storage-module';
 })
 export class LocalStorageService {
 
-  public readonly Collections = {
+  public readonly Collections: { [key: string]: string } = {
     localization: 'localization',
+    ideas: 'ideas',
   };
 
   storage: Storage;

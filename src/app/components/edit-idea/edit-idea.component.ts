@@ -4,6 +4,8 @@ import { FormBuilder, FormControl, FormGroup, Validators, AbstractControl } from
 import { Idea } from './models';
 import { INJECTION_TOKENS } from 'src/app/services/modal/modal.service';
 import { NOT_ONLY_SPACES } from 'src/app/utils/regexps';
+import { LocalStorageService } from 'src/app/services/local-storage/local-storage.service';
+import { EditIdeaService } from './edit-idea.service';
 
 @Component({
   selector: 'app-edit-idea',
@@ -17,6 +19,8 @@ export class EditIdeaComponent implements OnInit {
   constructor(
     public ls: LocalizationService,
     private formBuilder: FormBuilder,
+    private storageService: LocalStorageService,
+    private editIdeaService: EditIdeaService,
     @Inject(INJECTION_TOKENS.IDEA) public idea: Idea,
   ) { }
 
@@ -25,7 +29,7 @@ export class EditIdeaComponent implements OnInit {
   }
 
   onCollectIdea(): void {
-
+    this.collectIdea(this.ideaForm.value as Idea);
   }
 
   private initIdeaForm(): void {
@@ -36,6 +40,12 @@ export class EditIdeaComponent implements OnInit {
       ]),
       description: new FormControl(this.idea.description || ''),
     });
+  }
+
+  private collectIdea(idea: Idea): void {
+    const collection = this.storageService.useCollection<Idea>(this.storageService.Collections.ideas);
+    collection.add(idea);
+    this.editIdeaService.ideaCollecting.next();
   }
 
 }
