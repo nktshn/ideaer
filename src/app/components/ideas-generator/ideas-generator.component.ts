@@ -72,9 +72,11 @@ export class IdeasGeneratorComponent implements OnInit {
         title: this.fetchedIdea,
       }
     );
-    this.modal.backdropClick().subscribe(_ => {
-      this.modal.dispose();
-    });
+    this.subscriptions.push(
+      this.modal.backdropClick().subscribe(_ => {
+        this.modal.dispose();
+      })
+    );
   }
 
 }
