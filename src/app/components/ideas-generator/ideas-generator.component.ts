@@ -31,7 +31,6 @@ export class IdeasGeneratorComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.fetchedIdea = '...';
     this.onFetchIdea();
 
     this.subscriptions.push(

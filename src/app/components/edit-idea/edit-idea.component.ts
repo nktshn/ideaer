@@ -33,8 +33,8 @@ export class EditIdeaComponent implements OnInit {
   }
 
   trim(controlName: string): void {
-    const value = this.ideaForm.controls['title'].value as string;
-    this.ideaForm.controls[controlName].setValue(value.trim());
+    const currentValue = this.ideaForm.controls['title'].value as string;
+    this.ideaForm.controls[controlName].setValue(currentValue.trim());
   }
 
   private createIdeaForm(): FormGroup {
