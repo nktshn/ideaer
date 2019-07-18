@@ -6,18 +6,13 @@ import { LocalStorageModule } from './local-storage-module';
 })
 export class LocalStorageService {
 
-  public readonly Collections: { [key: string]: string } = {
-    localization: 'localization',
-    ideas: 'ideas',
-  };
-
   storage: Storage;
 
   constructor() {
     this.storage = window.localStorage;
   }
 
-  useCollection<T>(collectionName: string): LocalStorageModule.Collection<T> {
+  useCollection<T>(collectionName: CollectionName): LocalStorageModule.Collection<T> {
     return new LocalStorageModule.Collection<T>(collectionName);
   }
 
@@ -30,3 +25,7 @@ export class LocalStorageService {
   }
 
 }
+
+export type CollectionName =
+  'ideas' |
+  'localization';

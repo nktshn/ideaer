@@ -1,5 +1,6 @@
 @import './../../../scss/fonts';
 @import './../../../scss/colors';
+@import './../../../scss/boxing';
 
 .title {
     font-size: fontSize(34px);
@@ -10,7 +11,6 @@
     font-family: 'roboto-regular';
     color: $accentSoft;
     font-size: fontSize(21px);
-    border: 1px solid $lightGrey;
+    @include border($lightGrey);
     padding: 0.9rem;
-    border-radius: 8px;
 }

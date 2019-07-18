@@ -4,16 +4,13 @@
         <div class="form-items c">
             <div class="form-item c mb1">
                 <label class="label form-item-label">{{ls.getMessage('title')}}</label>
-                <input (change)="trim('title')" class="input form-item-input" [value]="ideaForm.controls['title'].value"
-                    type="text"
-                    formControlName="title">
+                <input (change)="trim('title')" class="input form-item-input" type="text" formControlName="title">
                 <div *ngIf="ideaForm.controls['title'].errors?.required" class="error-label form-item-error">*{{ls.getMessage('requiredField')}}</div>
                 <div *ngIf="ideaForm.controls['title'].errors?.pattern" class="error-label form-item-error">*{{ls.getMessage('notOnlySpacesField')}}</div>
             </div>
             <div class="form-item c mb1">
                 <label class="label form-item-label">{{ls.getMessage('description')}}</label>
-                <textarea (change)="trim('description')" autosize class="input"
-                    [value]="ideaForm.controls['description'].value" type="text"
+                <textarea (change)="trim('description')" autosize class="input" type="text"
                     formControlName="description"></textarea>
             </div>
         </div>

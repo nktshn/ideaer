@@ -1,0 +1,17 @@
+@import './../../../scss/boxing.scss';
+@import './../../../scss/colors.scss';
+@import './../../../scss/fonts.scss';
+
+.idea-item  {
+    @include border($lightGrey);
+    color: $dark;
+}
+
+.idea-title {
+    font-size: fontSize(18px);
+}
+
+.idea-description {
+    font-size: fontSize(14px);
+    color: $grey;
+}

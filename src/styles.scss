@@ -53,8 +53,8 @@ label.label {
 }
 
 input.input, textarea.input {
-    border: 1px solid $lightGrey;
-    border-radius: 5px;
+    @include border($lightGrey);
+    border: none;
     font-size: fontSize(16px);
     color: $dark;
     font-family: 'roboto-light';

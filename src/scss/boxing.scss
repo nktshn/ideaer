@@ -91,3 +91,10 @@ $classTypes: (
     @return $res; 
 };
 @include generateMarginsAndPaddings(3);
+
+// mixins 
+
+@mixin border($color) {
+    box-shadow: 0px 0px 0px 1px $color;
+    border-radius: 6px;
+}

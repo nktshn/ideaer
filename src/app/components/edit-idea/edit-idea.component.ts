@@ -48,7 +48,7 @@ export class EditIdeaComponent implements OnInit {
   }
 
   private collectIdea(idea: Idea): void {
-    const collection = this.storageService.useCollection<Idea>(this.storageService.Collections.ideas);
+    const collection = this.storageService.useCollection<Idea>('ideas');
     collection.add(idea);
     this.editIdeaService.ideaHasBeenCollected.next();
   }

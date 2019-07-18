@@ -16,6 +16,7 @@ import { MyCollectionComponent } from './components/my-collection/my-collection.
 import { EditIdeaComponent } from './components/edit-idea/edit-idea.component';
 import { OverlayModule } from '@angular/cdk/overlay';
 import { TextareaAutosizeModule } from 'ngx-textarea-autosize';
+import { MyIdeasListComponent } from './components/my-ideas-list/my-ideas-list.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { TextareaAutosizeModule } from 'ngx-textarea-autosize';
     BtnComponent,
     MyCollectionComponent,
     EditIdeaComponent,
+    MyIdeasListComponent,
   ],
   imports: [
     BrowserModule,

@@ -37,12 +37,12 @@ export class LocalizationService {
   }
 
   private setLocalizationToLocalStorage(): void {
-    const collection = this.lss.useCollection<SupportedLocalization[1]>(this.lss.Collections.localization);
+    const collection = this.lss.useCollection<SupportedLocalization[1]>('localization');
     collection.update(0, this.currentLocalization);
   }
 
   private getLocalizationFromLocalStorage(): SupportedLocalization {
-    const collection = this.lss.useCollection<SupportedLocalization>(this.lss.Collections.localization);
+    const collection = this.lss.useCollection<SupportedLocalization>('localization');
     return collection.getData()[0];
   }
 
