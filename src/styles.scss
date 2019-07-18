@@ -16,6 +16,9 @@ body * {
     outline: none;
 }
 
+textarea {
+    resize: none;
+}
 // Headers
 
 $fontSizes: (
@@ -49,14 +52,21 @@ label.label {
     color: $grey;
 }
 
-input.input {
-    height: 38px;
+input.input, textarea.input {
     border: 1px solid $lightGrey;
     border-radius: 5px;
-    padding: 0 12px 0 12px;
     font-size: fontSize(16px);
     color: $dark;
     font-family: 'roboto-light';
+    padding: 0.9rem;
+}
+
+.input.input {
+    
+}
+
+textarea.input {
+    max-height: 300px;
 }
 
 .card {

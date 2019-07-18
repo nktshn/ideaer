@@ -8,6 +8,7 @@ import { EditIdeaComponent } from '../edit-idea/edit-idea.component';
 import { Idea } from '../edit-idea/models';
 import { EditIdeaService } from '../edit-idea/edit-idea.service';
 import { OverlayRef } from '@angular/cdk/overlay';
+import { BoredApiActivity } from 'src/app/services/boredapi/models';
 
 @Component({
   selector: 'app-ideas-generator',
@@ -45,23 +46,11 @@ export class IdeasGeneratorComponent implements OnInit {
     this.subscriptions.forEach(sub => sub.unsubscribe());
   }
 
-  onFetchIdea(): void {
+  async onFetchIdea(): Promise<void> {
     this.fetchedIdea = '...';
     this.disabled = true;
-    this.subscriptions.push(
-      this.boredapi.fetchIdea().pipe(
-        // do request again if the fetched idea is the same
-        takeWhile((idea => {
-          return idea.activity !== this.fetchedIdea;
-        }))
-      ).subscribe(idea => {
-        this.fetchedIdea = idea.activity;
-      }, (err => {
-        this.fetchedIdea = `${this.ls.getMessage('somethingWentWrong')} :(`;
-      }), () => {
-        this.disabled = false;
-      })
-    );
+    this.fetchedIdea = await this.boredapi.fetchIdea(this.fetchedIdea, null);
+    this.disabled = false;
   }
 
   onCollectIdea(): void {

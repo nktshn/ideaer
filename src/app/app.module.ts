@@ -1,7 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ApiService } from './services/api.service';
@@ -16,6 +15,7 @@ import { BtnComponent } from './components/UI/btn/btn.component';
 import { MyCollectionComponent } from './components/my-collection/my-collection.component';
 import { EditIdeaComponent } from './components/edit-idea/edit-idea.component';
 import { OverlayModule } from '@angular/cdk/overlay';
+import { TextareaAutosizeModule } from 'ngx-textarea-autosize';
 
 @NgModule({
   declarations: [
@@ -37,6 +37,7 @@ import { OverlayModule } from '@angular/cdk/overlay';
     HttpClientModule,
     OverlayModule,
     ReactiveFormsModule,
+    TextareaAutosizeModule,
   ],
   providers: [
     ApiService,
