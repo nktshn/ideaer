@@ -14,6 +14,7 @@ Angular 8 code example.
 - Usage of power of SCSS (search for boxing.scss)
 - Angular CDK
 - Reactive Forms
+- Form validation
 
 ## Development server
 

@@ -1,5 +1,5 @@
 export const LOCALIZATION_DATA: LocalizationData = {
-    title: {
+    appTitle: {
         en: 'Ideaer - Your ideas collection',
         ru: 'Ideaer - Твоя коллекция идей'
     },
@@ -26,6 +26,22 @@ export const LOCALIZATION_DATA: LocalizationData = {
     collectIdea: {
         en: 'Collect the idea',
         ru: 'Добавить идею в коллекцию'
+    },
+    title: {
+        en: 'Title',
+        ru: 'Заголовок'
+    },
+    description: {
+        en: 'Description',
+        ru: 'Описание'
+    },
+    requiredField: {
+        en: 'This field is required',
+        ru: 'Это обязательное поле'
+    },
+    notOnlySpacesField: {
+        en: 'This field requires at least one character is not whitespace',
+        ru: 'Поле не может содержать только пробелы'
     }
 };
 

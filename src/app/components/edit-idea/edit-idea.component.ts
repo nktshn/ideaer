@@ -25,15 +25,20 @@ export class EditIdeaComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.initIdeaForm();
+    this.ideaForm = this.createIdeaForm();
   }
 
   onCollectIdea(): void {
     this.collectIdea(this.ideaForm.value as Idea);
   }
 
-  private initIdeaForm(): void {
-    this.ideaForm = this.formBuilder.group({
+  trim(controlName: string): void {
+    const value = this.ideaForm.controls['title'].value as string;
+    this.ideaForm.controls[controlName].setValue(value.trim());
+  }
+
+  private createIdeaForm(): FormGroup {
+    return this.formBuilder.group({
       title: new FormControl(this.idea.title, [
         Validators.required,
         Validators.pattern(NOT_ONLY_SPACES),
