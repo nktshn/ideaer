@@ -21,19 +21,19 @@ describe('LocalStorageService', () => {
     });
 
     it('useCollection() should return Collection', () => {
-        const collection = service.useCollection<string[]>('test');
+        const collection = service.useCollection<string[]>('ideas');
         expect(collection).toBeTruthy();
     });
 
     it('useCollection().getData() should return []', () => {
-        const collection = service.useCollection<string[]>('test');
+        const collection = service.useCollection<string[]>('ideas');
         const result = collection.getData();
         const expectation = [];
         expect(result).toEqual(expectation);
     });
 
     it('useCollection().add() should add values properly', () => {
-        const collection = service.useCollection<string>('add');
+        const collection = service.useCollection<string>('ideas');
         const input = ['1', '2', '3'];
         collection.add(...input);
         const result = collection.getData();
@@ -42,8 +42,8 @@ describe('LocalStorageService', () => {
     });
 
     it('useCollection().update() should update values properly', () => {
-        const collection = service.useCollection<{ a: number }>('update');
-        localStorage.setItem('update', JSON.stringify([{ a: 0 }, { a: 2 }]));
+        const collection = service.useCollection<{ a: number }>('ideas');
+        localStorage.setItem('ideas', JSON.stringify([{ a: 0 }, { a: 2 }]));
         const input = { a: 3 };
         collection.update(0, input);
         const result = collection.getData();
@@ -53,8 +53,8 @@ describe('LocalStorageService', () => {
 
 
     it('useCollection().update() should update values properly with normalization', () => {
-        const collection = service.useCollection<{ a: number }>('update');
-        localStorage.setItem('update', JSON.stringify([{ a: 0 }, { a: 1 }]));
+        const collection = service.useCollection<{ a: number }>('ideas');
+        localStorage.setItem('ideas', JSON.stringify([{ a: 0 }, { a: 1 }]));
         const input = { a: 2 };
         collection.update(5, input);
         const result = collection.getData();
@@ -64,8 +64,8 @@ describe('LocalStorageService', () => {
     });
 
     it('useCollection().remove() should remove values properly with normalization', () => {
-        const collection = service.useCollection<number>('update');
-        localStorage.setItem('update', JSON.stringify([1, 2, 3, , 5]));
+        const collection = service.useCollection<number>('ideas');
+        localStorage.setItem('ideas', JSON.stringify([1, 2, 3, , 5]));
         collection.remove(2);
         const result = collection.getData();
         const expectation = [1, 2, 5];
