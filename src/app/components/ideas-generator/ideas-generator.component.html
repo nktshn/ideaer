@@ -1,7 +1,7 @@
 <div class="ideas-generator c">
-    <h2>{{ls.getMessage('generatorTitle')}}:</h2>
-    <div class="fetched-idea mt2">{{fetchedIdea}}</div>
-    <div class="mt2 r w wr">
+    <h2 class="mb2">{{ls.getMessage('generatorTitle')}}:</h2>
+    <div class="fetched-idea mb2">{{fetchedIdea}}</div>
+    <div class="r w wr">
         <app-btn class="mr1 mb1" type="primary" [disabled]="disabled" (btnClick)="onFetchIdea()"
             [value]="ls.getMessage('getAnotherOne')">
         </app-btn>

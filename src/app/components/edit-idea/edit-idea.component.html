@@ -1,7 +1,7 @@
 <div class="edit-idea p1 card absolute-center">
-    <h3>{{ls.getMessage('collectIdea')}}</h3>
-    <form [formGroup]="ideaForm" class="c mt2">
-        <div class="form-items c">
+    <h3 class="mb2">{{ls.getMessage('collectIdea')}}</h3>
+    <form [formGroup]="ideaForm" class="c">
+        <div class="form-items c mb2">
             <div class="form-item c mb1">
                 <label class="label form-item-label">{{ls.getMessage('title')}}</label>
                 <input (change)="trim('title')" class="input form-item-input" type="text" formControlName="title">
@@ -14,7 +14,7 @@
                     formControlName="description"></textarea>
             </div>
         </div>
-        <div class="btns r mt2 je">
+        <div class="btns r je">
             <app-btn type="primary" [disabled]="ideaForm.invalid" (btnClick)="onCollectIdea()"
                 [value]="ls.getMessage('collect')">
             </app-btn>

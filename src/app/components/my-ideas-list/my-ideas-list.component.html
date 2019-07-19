@@ -1,6 +1,6 @@
-<div class="my-ideas-list c mt2 w">
+<div class="my-ideas-list c w">
     <div *ngFor="let idea of myIdeasList" class="idea-item c w p1 mb1">
-        <div class="idea-title">{{idea.title}}</div>
-        <div *ngIf="idea.description" class="idea-description mt1">{{idea.description}}</div>
+        <div class="idea-title mb1">{{idea.title}}</div>
+        <div *ngIf="idea.description" class="idea-description">{{idea.description}}</div>
     </div>
 </div>
