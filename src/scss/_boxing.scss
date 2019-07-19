@@ -66,12 +66,16 @@
 $classTypes: (
     m: margin,
     p: padding,
+    
     ml: margin-left,
     mr: margin-right,
-    pl: padding-left,
-    pr: padding-right,
     mt: margin-top,
     mb: margin-bottom,
+
+    pl: padding-left,
+    pr: padding-right,
+    pb: padding-bottom,
+    pt: padding-top,
 );
 @mixin generateMarginsAndPaddings($len) {
     @each $className, $styleName in $classTypes {

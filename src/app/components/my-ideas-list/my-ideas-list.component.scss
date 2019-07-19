@@ -1,10 +1,19 @@
 @import './../../../scss/boxing.scss';
 @import './../../../scss/colors.scss';
 @import './../../../scss/fonts.scss';
+@import './../../../scss/animations.scss';
 
 .idea-item  {
     @include bottomLine($lightGrey);
     color: $dark;
+    transition: $globalTransition;
+    border-radius: 6px;
+    transform: translateX(-#{getPadding(1)});
+    &:hover {
+        cursor: pointer;
+        background-color: $accentSoftest;
+        box-shadow: none;
+    }
 }
 
 .idea-title {
