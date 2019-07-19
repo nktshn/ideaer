@@ -98,3 +98,8 @@ $classTypes: (
     box-shadow: 0px 0px 0px 1px $color;
     border-radius: 6px;
 }
+
+
+@mixin bottomLine($color) {
+    box-shadow: 0px 1px 0px 0px #efefef;
+}

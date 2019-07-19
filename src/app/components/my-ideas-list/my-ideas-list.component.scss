@@ -3,7 +3,7 @@
 @import './../../../scss/fonts.scss';
 
 .idea-item  {
-    @include border($lightGrey);
+    @include bottomLine($lightGrey);
     color: $dark;
 }
 
@@ -14,4 +14,5 @@
 .idea-description {
     font-size: fontSize(14px);
     color: $grey;
+    line-height: 1.2rem;
 }

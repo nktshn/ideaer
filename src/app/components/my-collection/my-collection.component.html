@@ -1,4 +1,5 @@
 <div class="my-collection c">
     <h2>{{ls.getMessage('myCollection')}}</h2>
-    <app-my-ideas-list></app-my-ideas-list>
+    <div *ngIf="myIdeasList?.length === 0" class="no-ideas-collected mt2">{{ls.getMessage('emptyCollection')}} :(</div>
+    <app-my-ideas-list [myIdeasList]="myIdeasList"></app-my-ideas-list>
 </div>

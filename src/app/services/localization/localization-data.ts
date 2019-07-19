@@ -42,6 +42,10 @@ export const LOCALIZATION_DATA: LocalizationData = {
     notOnlySpacesField: {
         en: 'This field requires at least one character is not whitespace',
         ru: 'Поле не может содержать только пробелы'
+    },
+    emptyCollection: {
+        en: 'There\'re no ideas in your collection',
+        ru: 'В вашей коллекции нет идей'
     }
 };
 
