@@ -2,6 +2,6 @@
 @import './../../../scss/fonts';
 
 .no-ideas-collected {
-    font-size: fontSize(18px);
+    font-size: calcRem(18px);
     color: $grey;
 }

@@ -3,14 +3,14 @@
 @import './../../../scss/boxing';
 
 .title {
-    font-size: fontSize(34px);
+    font-size: calcRem(34px);
     color: $dark;
 }
 
 .fetched-idea {
     font-family: 'roboto-regular';
     color: $accentSoft;
-    font-size: fontSize(21px);
+    font-size: calcRem(21px);
     @include border($lightGrey);
     padding: 0.9rem;
 }

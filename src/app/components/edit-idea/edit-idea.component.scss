@@ -1,8 +1,10 @@
+@import './../../../scss/fonts';
+
 .edit-idea {
     
 }
 
 .form-item-label, .form-item-input {
     margin-bottom: 0.3rem;
-    min-width: 400px;
+    min-width: calcRem(400px);
 }

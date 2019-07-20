@@ -1,6 +1,7 @@
-<div class="my-ideas-list c w">
+<div class="my-ideas-list c h w">
     <div *ngFor="let idea of myIdeasList" class="idea-item c w p1">
         <div class="idea-title">{{idea.title}}</div>
-        <div *ngIf="idea.description mt1" class="idea-description">{{idea.description}}</div>
+        <div *ngIf="idea.description" class="idea-description">{{idea.description}}</div>
+        <div (click)="onRemoveIdea(idea)" class="">x</div>
     </div>
 </div>

@@ -4,6 +4,7 @@ import { Idea } from '../edit-idea/models';
 import { Subscription } from 'rxjs';
 import { LocalStorageService } from 'src/app/services/local-storage/local-storage.service';
 import { EditIdeaService } from '../edit-idea/edit-idea.service';
+import { MyCollectionService } from './my-collection.service';
 
 @Component({
   selector: 'app-my-collection',
@@ -20,16 +21,13 @@ export class MyCollectionComponent implements OnInit {
     private storageService: LocalStorageService,
     private editIdeaService: EditIdeaService,
     public ls: LocalizationService,
+    private myCollectionService: MyCollectionService,
   ) { }
 
   async ngOnInit() {
     this.myIdeasList = await this.loadCollection();
 
-    this.subscriptions.push(
-      this.editIdeaService.ideaHasBeenCollected.subscribe(async _ => {
-        this.myIdeasList = await this.loadCollection();
-      })
-    );
+    this.handleSubscriptions();
   }
 
   ngOnDestroy(): void {
@@ -42,6 +40,25 @@ export class MyCollectionComponent implements OnInit {
       const ideas = collection.getData();
       resolve(ideas);
     });
+  }
+
+  private handleSubscriptions() {
+    this.subscriptions.push(
+
+      this.editIdeaService.ideaHasBeenCollected.subscribe(async _ => {
+        this.myIdeasList = await this.loadCollection();
+      }),
+
+      this.myCollectionService.ideaRemoving.subscribe(this.removeIdea.bind(this))
+
+    );
+  }
+
+  private async removeIdea(ideaToRemove: Idea) {
+    const collection = this.storageService.useCollection<Idea>('ideas');
+    const itemToRemoveIndex = collection.getData().findIndex(idea => idea.title === ideaToRemove.title)
+    collection.remove(itemToRemoveIndex);
+    this.myIdeasList = await this.loadCollection();
   }
 
 }

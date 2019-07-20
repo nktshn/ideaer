@@ -5,7 +5,7 @@ $mainFontSize: 16px;
 	@return $fontSize / $mainFontSize;
 }
 
-@function fontSize($size) {
+@function calcRem($size) {
 	@return #{remCalc($size)}rem;
 }
 

@@ -12,6 +12,12 @@ html, body {
     margin: 0;
 }
 
+body {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-auto-rows: max-content;
+}
+
 body * {
     outline: none;
 }
@@ -29,7 +35,7 @@ $fontSizes: (
 @mixin generateHeadersFontSizes() {
     @each $hIndex, $fontSize in $fontSizes {
         h#{$hIndex} { 
-            font-size : fontSize($fontSize);
+            font-size : calcRem($fontSize);
             color: $dark;
             margin: 0;
             font-weight: 400; 
@@ -48,14 +54,14 @@ app-home {
 }
 
 label.label {
-    font-size: fontSize(16px);
+    font-size: calcRem(16px);
     color: $grey;
 }
 
 input.input, textarea.input {
     @include border($lightGrey);
     border: none;
-    font-size: fontSize(16px);
+    font-size: calcRem(16px);
     color: $dark;
     font-family: 'roboto-light';
     padding: 0.9rem;
@@ -74,6 +80,7 @@ textarea.input {
     background-color: white;
     box-shadow: 1px 1px 21px -10px $lightGrey;
     border-radius: 5px;
+    flex: 1;
 }
 
 .cdk-backdrop {

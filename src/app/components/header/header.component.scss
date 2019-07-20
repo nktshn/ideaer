@@ -5,6 +5,6 @@
 .header {
     background-color: $accent;
     color: white;
-    font-size: fontSize(22px);
+    font-size: calcRem(22px);
     padding: #{getPadding(2)} #{getPadding(3)}
 }

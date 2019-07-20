@@ -3,12 +3,15 @@
 @import './../../../scss/fonts.scss';
 @import './../../../scss/animations.scss';
 
+.my-ideas-list {
+}
+
 .idea-item  {
     @include bottomLine($lightGrey);
     color: $dark;
     transition: $globalTransition;
     border-radius: 6px;
-    transform: translateX(-#{getPadding(1)});
+    transform: translate(-#{getPadding(1)}, -#{getPadding(1)});
     &:hover {
         cursor: pointer;
         background-color: $accentSoftest;
@@ -16,12 +19,17 @@
     }
 }
 
+.idea-title, .idea-description {
+    word-break: break-word;
+}
+
 .idea-title {
-    font-size: fontSize(18px);
+    font-size: calcRem(18px);
 }
 
 .idea-description {
-    font-size: fontSize(14px);
+    font-size: calcRem(14px);
     color: $grey;
     line-height: 1.2rem;
+    margin-top: 0.3rem;
 }
