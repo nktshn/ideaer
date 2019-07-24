@@ -1,16 +1,15 @@
 /**
- * async forEach function allows foreaching async callbacks via await
+ * async map function allows mapping async callbacks via await
  */
-export async function forEachAsync<T>(collection: T[], callback: (elem: T) => Promise<T> | any): Promise<T> {
-    let counter = 0;
+export async function mapAsync<T>(collection: T[], asyncCallback: (elem: T) => Promise<T> | any): Promise<T[]> {
+    let result: T[] = new Array(collection.length);
     return new Promise(async (res, rej) => {
-        for (let i = 0; i < collection.length; i++) {
+        const l = collection.length;
+        let i = 0;
+        for (i; i < l; i++) {
             const element = collection[i];
-            await callback(element);
-            counter++;
-            if (counter >= collection.length) {
-                res(element);
-            }
+            result.push(await asyncCallback(element));
         }
+        res(result);
     })
 }
