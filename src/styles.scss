@@ -13,9 +13,7 @@ html, body {
 }
 
 body {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-auto-rows: max-content;
+
 }
 
 body * {
@@ -76,7 +74,7 @@ textarea.input {
 }
 
 .cdk-backdrop {
-    position: absolute;
+    position: fixed;
     width: 100%;
     height: 100%;
     background-color: #{$dark}33;
