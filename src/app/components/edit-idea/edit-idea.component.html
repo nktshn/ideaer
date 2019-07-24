@@ -1,23 +1,23 @@
 <div class="edit-idea p1 card absolute-center">
-    <h3 class="mb2">{{ls.getMessage('collectIdea')}}</h3>
-    <form [formGroup]="ideaForm" class="c">
-        <div class="form-items c mb2">
-            <div class="form-item c mb1">
-                <label class="label form-item-label">{{ls.getMessage('title')}}</label>
-                <input (change)="trim('title')" class="input form-item-input" type="text" formControlName="title">
-                <div *ngIf="ideaForm.controls['title'].errors?.required" class="error-label form-item-error">*{{ls.getMessage('requiredField')}}</div>
-                <div *ngIf="ideaForm.controls['title'].errors?.pattern" class="error-label form-item-error">*{{ls.getMessage('notOnlySpacesField')}}</div>
-            </div>
-            <div class="form-item c mb1">
-                <label class="label form-item-label">{{ls.getMessage('description')}}</label>
-                <textarea (change)="trim('description')" autosize class="input" type="text"
-                    formControlName="description"></textarea>
-            </div>
-        </div>
-        <div class="btns r je">
-            <app-btn type="primary" [disabled]="ideaForm.invalid" (btnClick)="onCollectIdea()"
-                [value]="ls.getMessage('collect')">
-            </app-btn>
-        </div>
-    </form>
+  <h3 class="mb2">{{getModalTitle()}}</h3>
+  <form [formGroup]="ideaForm" class="c">
+    <div class="form-items c mb2">
+      <div class="form-item c mb1">
+        <label class="label form-item-label">{{ls.getMessage('title')}}</label>
+        <input (change)="trim('title')" class="input form-item-input" type="text" formControlName="title">
+        <div *ngIf="ideaForm.controls['title'].errors?.required" class="error-label form-item-error">*{{ls.getMessage('requiredField')}}</div>
+        <div *ngIf="ideaForm.controls['title'].errors?.pattern" class="error-label form-item-error">*{{ls.getMessage('notOnlySpacesField')}}</div>
+      </div>
+      <div class="form-item c mb1">
+        <label class="label form-item-label">{{ls.getMessage('description')}}</label>
+        <textarea (change)="trim('description')" autosize class="input" type="text"
+          formControlName="description"></textarea>
+      </div>
+    </div>
+    <div class="btns r je">
+      <app-btn type="primary" [disabled]="ideaForm.invalid" (btnClick)="onCollectIdea()"
+        [value]="getSubmitButtonText()">
+      </app-btn>
+    </div>
+  </form>
 </div>

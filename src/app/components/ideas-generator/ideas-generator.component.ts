@@ -2,13 +2,9 @@ import { Component, OnInit, ComponentRef } from '@angular/core';
 import { LocalizationService } from 'src/app/services/localization/localization.service';
 import { BoredService } from 'src/app/services/boredapi/bored.service';
 import { Subscription } from 'rxjs';
-import { takeWhile } from 'rxjs/operators';
-import { ModalService, INJECTION_TOKENS } from 'src/app/services/modal/modal.service';
-import { EditIdeaComponent } from '../edit-idea/edit-idea.component';
 import { Idea } from '../edit-idea/models';
 import { EditIdeaService } from '../edit-idea/edit-idea.service';
 import { OverlayRef } from '@angular/cdk/overlay';
-import { BoredApiActivity } from 'src/app/services/boredapi/models';
 
 @Component({
   selector: 'app-ideas-generator',
@@ -21,12 +17,11 @@ export class IdeasGeneratorComponent implements OnInit {
 
   disabled: boolean;
   fetchedIdea: string;
-  modal: OverlayRef;
+  collectIdeaModal: OverlayRef;
 
   constructor(
     public ls: LocalizationService,
     private boredapi: BoredService,
-    private modalService: ModalService,
     private editIdeaService: EditIdeaService,
   ) { }
 
@@ -35,8 +30,8 @@ export class IdeasGeneratorComponent implements OnInit {
 
     this.subscriptions.push(
       this.editIdeaService.ideaHasBeenCollected.subscribe(_ => {
-        this.modal.dispose();
         this.onFetchIdea();
+        this.collectIdeaModal.dispose();
       })
     );
   }
@@ -53,18 +48,12 @@ export class IdeasGeneratorComponent implements OnInit {
   }
 
   onCollectIdea(): void {
-    this.modal = this.modalService.openModal<EditIdeaComponent, Partial<Idea>>(
-      EditIdeaComponent,
-      INJECTION_TOKENS.IDEA,
-      {
-        title: this.fetchedIdea,
-      }
-    );
-    this.subscriptions.push(
-      this.modal.backdropClick().subscribe(_ => {
-        this.modal.dispose();
+    this.collectIdeaModal = this.editIdeaService.openIdeaModal({
+      type: 'collect',
+      idea: new Idea({
+        title: this.fetchedIdea
       })
-    );
+    });
   }
 
 }

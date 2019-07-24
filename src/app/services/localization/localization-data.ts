@@ -19,6 +19,10 @@ export const LOCALIZATION_DATA: LocalizationData = {
         en: 'Collect',
         ru: 'Добавить'
     },
+    save: {
+        en: 'Save',
+        ru: 'Сохранить'
+    },
     myCollection: {
         en: 'My collection',
         ru: 'Моя коллекция'
@@ -26,6 +30,14 @@ export const LOCALIZATION_DATA: LocalizationData = {
     collectIdea: {
         en: 'Collect the idea',
         ru: 'Добавить идею в коллекцию'
+    },
+    editIdea: {
+        en: 'Edit the idea',
+        ru: 'Редактировать идею'
+    },
+    createIdea: {
+        en: 'Create an idea',
+        ru: 'Создать идею'
     },
     title: {
         en: 'Title',

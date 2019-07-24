@@ -1,7 +1,7 @@
 <div class="my-ideas-list c h w">
-    <div *ngFor="let idea of myIdeasList" class="idea-item c w p1">
-        <div class="idea-title">{{idea.title}}</div>
-        <div *ngIf="idea.description" class="idea-description">{{idea.description}}</div>
-        <div (click)="onRemoveIdea(idea)" class="icon remove-icon">x</div>
-    </div>
+  <div *ngFor="let idea of myIdeasList" (click)="onClickOnIdea(idea)" class="idea-item c w p1">
+    <div class="idea-title">{{idea.title}}</div>
+    <div *ngIf="idea.description" class="idea-description">{{idea.description}}</div>
+    <div (click)="onRemoveIdea(idea)" class="icon remove-icon">x</div>
+  </div>
 </div>

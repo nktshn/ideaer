@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { LocalizationService } from 'src/app/services/localization/localization.service';
-import { Idea } from '../edit-idea/models';
+import { Idea, IdeaInjection } from '../edit-idea/models';
 import { Subscription } from 'rxjs';
 import { LocalStorageService } from 'src/app/services/local-storage/local-storage.service';
 import { EditIdeaService } from '../edit-idea/edit-idea.service';
 import { MyCollectionService } from './my-collection.service';
+import { ModalService, INJECTION_TOKENS } from 'src/app/services/modal/modal.service';
+import { EditIdeaComponent } from '../edit-idea/edit-idea.component';
 
 @Component({
   selector: 'app-my-collection',
@@ -22,6 +24,7 @@ export class MyCollectionComponent implements OnInit {
     private editIdeaService: EditIdeaService,
     public ls: LocalizationService,
     private myCollectionService: MyCollectionService,
+    private modalService: ModalService,
   ) { }
 
   async ngOnInit() {
@@ -49,7 +52,9 @@ export class MyCollectionComponent implements OnInit {
         this.myIdeasList = await this.loadCollection();
       }),
 
-      this.myCollectionService.ideaRemoving.subscribe(this.removeIdea.bind(this))
+      this.myCollectionService.ideaRemoving.subscribe(this.removeIdea.bind(this)),
+
+      this.myCollectionService.ideaCollecting.subscribe(this.collectIdea.bind(this))
 
     );
   }
@@ -59,6 +64,16 @@ export class MyCollectionComponent implements OnInit {
     const itemToRemoveIndex = collection.getData().findIndex(idea => idea.title === ideaToRemove.title)
     collection.remove(itemToRemoveIndex);
     this.myIdeasList = await this.loadCollection();
+  }
+
+  private editIdea(idea: Idea): void {
+
+  }
+
+  private collectIdea(idea: Idea): void {
+    const collection = this.storageService.useCollection<Idea>('ideas');
+    collection.add(idea);
+    this.editIdeaService.ideaHasBeenCollected.next();
   }
 
 }

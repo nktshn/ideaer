@@ -30,4 +30,8 @@ export class MyIdeasListComponent implements OnInit {
     this.myCollectionService.ideaRemoving.next(idea);
   }
 
+  onClickOnIdea(idea: Idea): void {
+    this.myCollectionService.ideaEditing.next(idea);
+  }
+
 }
