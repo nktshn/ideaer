@@ -1,6 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Idea } from '../edit-idea/models';
-import { LocalStorageService } from 'src/app/services/local-storage/local-storage.service';
 import { EditIdeaService } from '../edit-idea/edit-idea.service';
 import { Subscription } from 'rxjs';
 import { MyCollectionService } from '../my-collection/my-collection.service';
@@ -13,10 +12,11 @@ import { OverlayRef } from '@angular/cdk/overlay';
 })
 export class MyIdeasListComponent implements OnInit {
 
-  @Input() myIdeasList: Idea[] = [];
+  private subscriptions: Subscription[] = [];
 
   editIdeaModal: OverlayRef;
-  private subscriptions: Subscription[] = [];
+
+  @Input() myIdeasList: Idea[] = [];
 
   constructor(
     private myCollectionService: MyCollectionService,
@@ -34,8 +34,6 @@ export class MyIdeasListComponent implements OnInit {
   ngOnDestroy(): void {
     this.subscriptions.forEach(sub => sub.unsubscribe());
   }
-
-
 
   onRemoveIdea(idea: Idea) {
     this.myCollectionService.ideaRemoving.next(idea);

@@ -16,16 +16,15 @@ import { concat } from 'rxjs/internal/operators/concat';
 })
 export class MyCollectionComponent implements OnInit {
 
-  myIdeasList: Idea[];
-
   private subscriptions: Subscription[] = [];
+
+  myIdeasList: Idea[] = [];
 
   constructor(
     private storageService: LocalStorageService,
     private editIdeaService: EditIdeaService,
     public ls: LocalizationService,
     private myCollectionService: MyCollectionService,
-    private modalService: ModalService,
   ) { }
 
   async ngOnInit() {

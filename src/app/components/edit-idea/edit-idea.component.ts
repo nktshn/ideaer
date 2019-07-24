@@ -20,7 +20,6 @@ export class EditIdeaComponent implements OnInit {
   constructor(
     public ls: LocalizationService,
     private formBuilder: FormBuilder,
-    private storageService: LocalStorageService,
     private myCollectionService: MyCollectionService,
     @Inject(INJECTION_TOKENS.IDEA) public injectedIdeaData: IdeaInjection,
   ) { }
