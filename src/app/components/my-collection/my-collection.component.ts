@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { LocalizationService } from 'src/app/services/localization/localization.service';
 import { Idea, IdeaInjection } from '../edit-idea/models';
-import { Subscription } from 'rxjs';
+import { Subscription, merge } from 'rxjs';
 import { LocalStorageService } from 'src/app/services/local-storage/local-storage.service';
 import { EditIdeaService } from '../edit-idea/edit-idea.service';
 import { MyCollectionService } from './my-collection.service';
 import { ModalService, INJECTION_TOKENS } from 'src/app/services/modal/modal.service';
 import { EditIdeaComponent } from '../edit-idea/edit-idea.component';
+import { concat } from 'rxjs/internal/operators/concat';
 
 @Component({
   selector: 'app-my-collection',
@@ -52,22 +53,35 @@ export class MyCollectionComponent implements OnInit {
         this.myIdeasList = await this.loadCollection();
       }),
 
+      this.editIdeaService.ideaHasBeenRemoved.subscribe(async _ => {
+        this.myIdeasList = await this.loadCollection();
+      }),
+
+      this.editIdeaService.ideaHasBeenEdited.subscribe(async _ => {
+        this.myIdeasList = await this.loadCollection();
+      }),
+
       this.myCollectionService.ideaRemoving.subscribe(this.removeIdea.bind(this)),
 
-      this.myCollectionService.ideaCollecting.subscribe(this.collectIdea.bind(this))
+      this.myCollectionService.ideaCollecting.subscribe(this.collectIdea.bind(this)),
+
+      this.myCollectionService.ideaEditing.subscribe(this.editIdea.bind(this)),
 
     );
   }
 
-  private async removeIdea(ideaToRemove: Idea) {
+  private removeIdea(ideaToRemove: Idea) {
     const collection = this.storageService.useCollection<Idea>('ideas');
     const itemToRemoveIndex = collection.getData().findIndex(idea => idea.title === ideaToRemove.title)
     collection.remove(itemToRemoveIndex);
-    this.myIdeasList = await this.loadCollection();
+    this.editIdeaService.ideaHasBeenRemoved.next();
   }
 
-  private editIdea(idea: Idea): void {
-
+  private editIdea(ideaToUpdate: Idea) {
+    const collection = this.storageService.useCollection<Idea>('ideas');
+    const itemToRemoveIndex = collection.getData().findIndex(idea => idea.title === ideaToUpdate.title)
+    collection.update(itemToRemoveIndex, ideaToUpdate);
+    this.editIdeaService.ideaHasBeenEdited.next();
   }
 
   private collectIdea(idea: Idea): void {

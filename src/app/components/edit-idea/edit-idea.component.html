@@ -15,7 +15,7 @@
       </div>
     </div>
     <div class="btns r je">
-      <app-btn type="primary" [disabled]="ideaForm.invalid" (btnClick)="onCollectIdea()"
+      <app-btn type="primary" [disabled]="ideaForm.invalid" (btnClick)="handleSubmitButton()"
         [value]="getSubmitButtonText()">
       </app-btn>
     </div>

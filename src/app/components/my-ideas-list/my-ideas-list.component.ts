@@ -4,6 +4,7 @@ import { LocalStorageService } from 'src/app/services/local-storage/local-storag
 import { EditIdeaService } from '../edit-idea/edit-idea.service';
 import { Subscription } from 'rxjs';
 import { MyCollectionService } from '../my-collection/my-collection.service';
+import { OverlayRef } from '@angular/cdk/overlay';
 
 @Component({
   selector: 'app-my-ideas-list',
@@ -14,24 +15,37 @@ export class MyIdeasListComponent implements OnInit {
 
   @Input() myIdeasList: Idea[] = [];
 
+  editIdeaModal: OverlayRef;
+  private subscriptions: Subscription[] = [];
+
   constructor(
     private myCollectionService: MyCollectionService,
+    private editIdeaService: EditIdeaService,
   ) { }
 
   async ngOnInit() {
-
+    this.subscriptions.push(
+      this.editIdeaService.ideaHasBeenEdited.subscribe(_ => {
+        this.editIdeaModal.dispose();
+      })
+    );
   }
 
   ngOnDestroy(): void {
-
+    this.subscriptions.forEach(sub => sub.unsubscribe());
   }
+
+
 
   onRemoveIdea(idea: Idea) {
     this.myCollectionService.ideaRemoving.next(idea);
   }
 
-  onClickOnIdea(idea: Idea): void {
-    this.myCollectionService.ideaEditing.next(idea);
+  onClickOnIdea(ideaToEdit: Idea): void {
+    this.editIdeaModal = this.editIdeaService.openIdeaModal({
+      type: 'edit',
+      idea: ideaToEdit
+    });
   }
 
 }

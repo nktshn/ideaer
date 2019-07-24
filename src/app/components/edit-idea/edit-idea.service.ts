@@ -10,10 +10,9 @@ import { ModalService, INJECTION_TOKENS } from 'src/app/services/modal/modal.ser
 })
 export class EditIdeaService {
 
-  /**
-   * emit after an idea has been collected in storage.
-   */
   ideaHasBeenCollected: Subject<void> = new Subject();
+  ideaHasBeenRemoved: Subject<void> = new Subject();
+  ideaHasBeenEdited: Subject<void> = new Subject();
 
   constructor(
     private modalService: ModalService,

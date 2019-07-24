@@ -30,8 +30,13 @@ export class EditIdeaComponent implements OnInit {
     this.modalType = this.injectedIdeaData.type;
   }
 
-  onCollectIdea(): void {
-    this.myCollectionService.ideaCollecting.next(this.ideaForm.value as Idea);
+  handleSubmitButton(): void {
+    const submitHandlersByType: { [key in IdeaInjectionType]: () => any } = {
+      collect: this.handleCollectIdea.bind(this),
+      create: this.handleCreateIdea.bind(this),
+      edit: this.handleEditIdea.bind(this),
+    }
+    submitHandlersByType[this.modalType]();
   }
 
   trim(controlName: string): void {
@@ -75,6 +80,18 @@ export class EditIdeaComponent implements OnInit {
       ]),
       description: new FormControl(this.injectedIdeaData.idea.description || ''),
     });
+  }
+
+  private handleCollectIdea() {
+    this.myCollectionService.ideaCollecting.next(this.ideaForm.value as Idea);
+  }
+
+  private handleEditIdea() {
+    this.myCollectionService.ideaEditing.next(this.ideaForm.value as Idea);
+  }
+
+  private handleCreateIdea() {
+    this.myCollectionService.ideaCreating.next(this.ideaForm.value as Idea);
   }
 
 
