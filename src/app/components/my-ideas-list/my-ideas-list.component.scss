@@ -12,10 +12,18 @@
     transition: $globalTransition;
     border-radius: 6px;
     transform: translate(-#{getPadding(1)}, -#{getPadding(1)});
+    position: relative;
     &:hover {
         cursor: pointer;
         background-color: $accentSoftest;
         box-shadow: none;
+        .remove-icon {
+            opacity: 0.7;
+            &:hover {
+                opacity: 1;
+                font-family: 'roboto-bold'
+            }
+        }
     }
 }
 
@@ -25,6 +33,7 @@
 
 .idea-title {
     font-size: calcRem(18px);
+    padding-right: 0.7rem;
 }
 
 .idea-description {
@@ -32,4 +41,12 @@
     color: $grey;
     line-height: 1.2rem;
     margin-top: 0.3rem;
+}
+
+.remove-icon {
+    position: absolute;
+    top: 0.2rem;
+    right: 0.6rem;
+    color: $red;
+    opacity: 0;
 }
