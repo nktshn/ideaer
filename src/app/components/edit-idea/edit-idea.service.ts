@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
-import { IdeaInjection } from './models';
+import { IdeaInjection, Idea } from './models';
 import { OverlayRef } from '@angular/cdk/overlay';
 import { EditIdeaComponent } from './edit-idea.component';
 import { ModalService, INJECTION_TOKENS } from 'src/app/services/modal/modal.service';
@@ -13,6 +13,7 @@ export class EditIdeaService {
   ideaHasBeenCollected: Subject<void> = new Subject();
   ideaHasBeenRemoved: Subject<void> = new Subject();
   ideaHasBeenEdited: Subject<void> = new Subject();
+  ideaHasBeenCreated: Subject<void> = new Subject();
 
   constructor(
     private modalService: ModalService,

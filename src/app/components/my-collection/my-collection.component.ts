@@ -8,6 +8,7 @@ import { MyCollectionService } from './my-collection.service';
 import { ModalService, INJECTION_TOKENS } from 'src/app/services/modal/modal.service';
 import { EditIdeaComponent } from '../edit-idea/edit-idea.component';
 import { concat } from 'rxjs/internal/operators/concat';
+import { OverlayRef } from '@angular/cdk/overlay';
 
 @Component({
   selector: 'app-my-collection',
@@ -17,6 +18,7 @@ import { concat } from 'rxjs/internal/operators/concat';
 export class MyCollectionComponent implements OnInit {
 
   private subscriptions: Subscription[] = [];
+  private createIdeaModal: OverlayRef;
 
   myIdeasList: Idea[] = [];
 
@@ -35,6 +37,13 @@ export class MyCollectionComponent implements OnInit {
 
   ngOnDestroy(): void {
     this.subscriptions.forEach(sub => sub.unsubscribe());
+  }
+
+  onCreateIdea() {
+    this.createIdeaModal = this.editIdeaService.openIdeaModal({
+      type: 'create',
+      idea: new Idea({})
+    })
   }
 
   private loadCollection(): Promise<Idea[]> {
@@ -60,11 +69,15 @@ export class MyCollectionComponent implements OnInit {
         this.myIdeasList = await this.loadCollection();
       }),
 
+      this.editIdeaService.ideaHasBeenCreated.subscribe(async _ => {
+        this.createIdeaModal.dispose();
+        this.myIdeasList = await this.loadCollection();
+      }),
+
       this.myCollectionService.ideaRemoving.subscribe(this.removeIdea.bind(this)),
-
       this.myCollectionService.ideaCollecting.subscribe(this.collectIdea.bind(this)),
-
       this.myCollectionService.ideaEditing.subscribe(this.editIdea.bind(this)),
+      this.myCollectionService.ideaCreating.subscribe(this.createIdea.bind(this)),
 
     );
   }
@@ -87,6 +100,12 @@ export class MyCollectionComponent implements OnInit {
     const collection = this.storageService.useCollection<Idea>('ideas');
     collection.add(idea);
     this.editIdeaService.ideaHasBeenCollected.next();
+  }
+
+  private createIdea(idea: Idea): void {
+    const collection = this.storageService.useCollection<Idea>('ideas');
+    collection.add(idea);
+    this.editIdeaService.ideaHasBeenCreated.next();
   }
 
 }

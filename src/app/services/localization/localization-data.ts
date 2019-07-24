@@ -23,6 +23,10 @@ export const LOCALIZATION_DATA: LocalizationData = {
         en: 'Save',
         ru: 'Сохранить'
     },
+    create: {
+        en: 'Create',
+        ru: 'Создать'
+    },
     myCollection: {
         en: 'My collection',
         ru: 'Моя коллекция'

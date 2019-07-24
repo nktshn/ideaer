@@ -2,4 +2,7 @@
     <h2 class="mb2">{{ls.getMessage('myCollection')}}</h2>
     <div *ngIf="myIdeasList?.length === 0" class="no-ideas-collected">{{ls.getMessage('emptyCollection')}} :(</div>
     <app-my-ideas-list [myIdeasList]="myIdeasList"></app-my-ideas-list>
+    <app-btn class="ae" type="primary" (btnClick)="onCreateIdea()"
+        [value]="ls.getMessage('create')">
+    </app-btn>
 </div>
