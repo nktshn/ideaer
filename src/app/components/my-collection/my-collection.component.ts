@@ -29,10 +29,12 @@ export class MyCollectionComponent implements OnInit {
   ) { }
 
   async ngOnInit() {
-    this.myIdeasList = await this.loadCollection();
     this.ideaStorageCollection = this.storageService.useCollection<Idea>('ideas');
-
     this.handleSubscriptions();
+
+    this.loadCollection().then(ideas => {
+      this.myIdeasList = ideas;
+    });
   }
 
   ngOnDestroy(): void {
