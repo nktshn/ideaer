@@ -13,8 +13,7 @@ import { OverlayRef } from '@angular/cdk/overlay';
 export class MyIdeasListComponent implements OnInit {
 
   private subscriptions: Subscription[] = [];
-
-  editIdeaModal: OverlayRef;
+  private editIdeaModal: OverlayRef;
 
   @Input() myIdeasList: Idea[] = [];
 

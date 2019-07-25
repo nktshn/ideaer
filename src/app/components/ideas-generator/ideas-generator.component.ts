@@ -14,10 +14,10 @@ import { OverlayRef } from '@angular/cdk/overlay';
 export class IdeasGeneratorComponent implements OnInit {
 
   private subscriptions: Subscription[] = [];
+  private collectIdeaModal: OverlayRef;
 
   disabled: boolean;
   fetchedIdea: string;
-  collectIdeaModal: OverlayRef;
 
   constructor(
     public ls: LocalizationService,

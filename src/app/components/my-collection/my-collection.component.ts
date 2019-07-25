@@ -1,14 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { LocalizationService } from 'src/app/services/localization/localization.service';
-import { Idea, IdeaInjection } from '../edit-idea/models';
-import { Subscription, merge } from 'rxjs';
+import { Idea } from '../edit-idea/models';
+import { Subscription } from 'rxjs';
 import { LocalStorageService } from 'src/app/services/local-storage/local-storage.service';
 import { EditIdeaService } from '../edit-idea/edit-idea.service';
 import { MyCollectionService } from './my-collection.service';
-import { ModalService, INJECTION_TOKENS } from 'src/app/services/modal/modal.service';
-import { EditIdeaComponent } from '../edit-idea/edit-idea.component';
-import { concat } from 'rxjs/internal/operators/concat';
 import { OverlayRef } from '@angular/cdk/overlay';
+import { LocalStorageModule } from 'src/app/services/local-storage/local-storage-module';
 
 @Component({
   selector: 'app-my-collection',
@@ -19,6 +17,7 @@ export class MyCollectionComponent implements OnInit {
 
   private subscriptions: Subscription[] = [];
   private createIdeaModal: OverlayRef;
+  private ideaStorageCollection: LocalStorageModule.Collection<Idea>;
 
   myIdeasList: Idea[] = [];
 
@@ -31,6 +30,7 @@ export class MyCollectionComponent implements OnInit {
 
   async ngOnInit() {
     this.myIdeasList = await this.loadCollection();
+    this.ideaStorageCollection = this.storageService.useCollection<Idea>('ideas');
 
     this.handleSubscriptions();
   }
@@ -83,28 +83,24 @@ export class MyCollectionComponent implements OnInit {
   }
 
   private removeIdea(ideaToRemove: Idea) {
-    const collection = this.storageService.useCollection<Idea>('ideas');
-    const itemToRemoveIndex = collection.getData().findIndex(idea => idea.title === ideaToRemove.title)
-    collection.remove(itemToRemoveIndex);
+    const itemToRemoveIndex = this.ideaStorageCollection.getData().findIndex(idea => idea.title === ideaToRemove.title)
+    this.ideaStorageCollection.remove(itemToRemoveIndex);
     this.editIdeaService.ideaHasBeenRemoved.next();
   }
 
   private editIdea(ideaToUpdate: Idea) {
-    const collection = this.storageService.useCollection<Idea>('ideas');
-    const itemToRemoveIndex = collection.getData().findIndex(idea => idea.title === ideaToUpdate.title)
-    collection.update(itemToRemoveIndex, ideaToUpdate);
+    const itemToEditIndex = this.ideaStorageCollection.getData().findIndex(idea => idea.title === ideaToUpdate.title)
+    this.ideaStorageCollection.update(itemToEditIndex, ideaToUpdate);
     this.editIdeaService.ideaHasBeenEdited.next();
   }
 
   private collectIdea(idea: Idea): void {
-    const collection = this.storageService.useCollection<Idea>('ideas');
-    collection.add(idea);
+    this.ideaStorageCollection.add(idea);
     this.editIdeaService.ideaHasBeenCollected.next();
   }
 
   private createIdea(idea: Idea): void {
-    const collection = this.storageService.useCollection<Idea>('ideas');
-    collection.add(idea);
+    this.ideaStorageCollection.add(idea);
     this.editIdeaService.ideaHasBeenCreated.next();
   }
 
